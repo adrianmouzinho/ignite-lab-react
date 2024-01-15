@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 const subscribeUserFormSchema = z.object({
@@ -26,6 +27,8 @@ const subscribeUserFormSchema = z.object({
 type SubscribeUserFormData = z.infer<typeof subscribeUserFormSchema>;
 
 export function SubscriptionForm() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -36,6 +39,7 @@ export function SubscriptionForm() {
 
   function subscribeUser(data: SubscribeUserFormData) {
     console.log(data);
+    navigate("/event");
   }
 
   return (
